@@ -37,7 +37,9 @@ namespace MediaTekDocuments.dal
         private const string POST = "POST";
         /// <summary>
         /// méthode HTTP pour update
-
+        private const string PUT = "PUT";
+        /// méthode HTTP pour delete
+        private const string DELETE = "DELETE";
         /// <summary>
         /// Méthode privée pour créer un singleton
         /// initialise l'accès à l'API
@@ -130,6 +132,26 @@ namespace MediaTekDocuments.dal
             return lesRevues;
         }
 
+        /// <summary>
+        /// Retourne toutes les commandes de document à partir de la BDD
+        /// </summary>
+        /// <returns>Liste d'objets CommandeDocument</returns>
+        public List<CommandeDocument> GetAllCommandesDocument()
+        {
+            List<CommandeDocument> lesCommandesDoc = TraitementRecup<CommandeDocument>(GET, "commandedocument", null);
+            return lesCommandesDoc;
+        }
+
+        /// <summary>
+        /// Retourne tous les suivis et leurs libellés à partir de la BDD
+        /// </summary>
+        /// <returns>Liste d'objets Suivi</returns>
+        public List<Suivi> GetAllSuivi()
+        {
+            List<Suivi> lesSuivis = TraitementRecup<Suivi>(GET, "suivi", null);
+            return lesSuivis;
+        }
+
 
         /// <summary>
         /// Retourne les exemplaires d'une revue
@@ -162,6 +184,80 @@ namespace MediaTekDocuments.dal
             }
             return false;
         }
+
+        /// <summary>
+        /// Retourne toutes les commandes du document à partir de la BDD
+        /// </summary>
+        /// <param name="idDocument">id du document concernée</param>
+        /// <returns>Liste d'objets CommandeDocument</returns>
+        public List<CommandeDocument> GetCommandesDocument(string idDocument)
+        {
+            String jsonIdDocument = convertToJson("id", idDocument);
+            List<CommandeDocument> lesCommandesDoc = TraitementRecup<CommandeDocument>(GET, "commandedocument/" + jsonIdDocument, null);
+            return lesCommandesDoc;
+        }
+
+        /// <summary>
+        /// Ecriture d'une nouvelle commande de document dans la base de données
+        /// </summary>
+        /// <param name="commandeDoc">commande de document à insérer</param>
+        /// <returns>true si l'insertion a pu se faire (retour != null)</returns>
+        public bool CreerCommandeDocument(CommandeDocument commandeDoc)
+        {
+            String jsonCommandeDocument = JsonConvert.SerializeObject(commandeDoc, new CustomDateTimeConverter());
+            try
+            {
+                List<CommandeDocument> liste = TraitementRecup<CommandeDocument>(POST, "commandedocument", "champs=" + jsonCommandeDocument);
+                return (liste != null);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Supprime une commande dans la base de données
+        /// </summary>
+        /// <param name="idCommande">id de la commande à supprimer</param>
+        /// <returns>true si la suppression a pu se faire (retour != null)</returns>
+        public bool SupprimerCommande(string idCommande)
+        {
+            String jsonIdDocument = convertToJson("id", idCommande);
+            try
+            {
+                List<CommandeDocument> liste = TraitementRecup<CommandeDocument>(DELETE, "commande/" + jsonIdDocument, null);
+                return (liste != null);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Modifie l'étape de suivi d'une commande de document dans la base de données
+        /// </summary>
+        /// <param name="idDocument">Id de la commande de document concerné</param>
+        /// <param name="idNouvelleEtapeSuivi">Id de la nouvelle étape de suivi</param>
+        /// <returns>True si la modification a pu se faire</returns>
+        public bool ModifierEtapeSuiviCommandeDocument(string idCommandeDoc, string idNouvelleEtapeSuivi)
+        {
+            String jsonIdNouvelleEtapeSuivi = convertToJson("idEtapeSuivi", idNouvelleEtapeSuivi);
+            try
+            {
+                List<CommandeDocument> liste = TraitementRecup<CommandeDocument>(PUT, "commandedocument/"+ idCommandeDoc, "champs=" + jsonIdNouvelleEtapeSuivi);
+                return (liste != null);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
+        }
+
 
         /// <summary>
         /// Traitement de la récupération du retour de l'api, avec conversion du json en liste pour les select (GET)
