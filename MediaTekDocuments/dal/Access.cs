@@ -152,6 +152,28 @@ namespace MediaTekDocuments.dal
             return lesSuivis;
         }
 
+        /// <summary>
+        /// Retourne tous les abonnements à partir de la BDD
+        /// </summary>
+        /// <returns>Liste d'objets Abonnement</returns>
+        public List<Abonnement> GetAllAbonnement()
+        {
+            List<Abonnement> lesAbonnements = TraitementRecup<Abonnement>(GET, "abonnement", null);
+            return lesAbonnements;
+        }
+
+        /// <summary>
+        /// Retourne tous les abonnements qui s'apprête à expirer (se termine dans moins de 30 jours) à partir de la BDD.
+        /// On va se baser sur l'abonnement le plus récent de chaque revue.
+        /// </summary>
+        /// <returns>Liste d'objets Abonnement</returns>
+        public List<Abonnement> GetAllAbonnementBientotExpire()
+        {
+            String jsonPeriodeRestanteMin = convertToJson("periodeRestanteMin", 20); //en jour
+            List<Abonnement> lesAbonnements = TraitementRecup<Abonnement>(GET, "abonnement/" + jsonPeriodeRestanteMin, null);
+            return lesAbonnements;
+        }
+
 
         /// <summary>
         /// Retourne les exemplaires d'une revue
@@ -176,6 +198,38 @@ namespace MediaTekDocuments.dal
             try
             {
                 List<Exemplaire> liste = TraitementRecup<Exemplaire>(POST, "exemplaire", "champs=" + jsonExemplaire);
+                return (liste != null);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Retourne les abonnements d'une revue
+        /// </summary>
+        /// <param name="idDocument">id de la revue concernée</param>
+        /// <returns>Liste d'objets Abonnement</returns>
+        public List<Abonnement> GetAbonnementsRevue(string idDocument)
+        {
+            String jsonIdDocument = convertToJson("idRevue", idDocument);
+            List<Abonnement> lesAbonnements = TraitementRecup<Abonnement>(GET, "abonnement/" + jsonIdDocument, null);
+            return lesAbonnements;
+        }
+
+        /// <summary>
+        /// Ecriture d'un nouveau abonnement dans la base de données
+        /// </summary>
+        /// <param name="abonnement">abonnement de document à insérer</param>
+        /// <returns>true si l'insertion a pu se faire (retour != null)</returns>
+        public bool CreerAbonnement(Abonnement abonnement)
+        {
+            String jsonCommandeDocument = JsonConvert.SerializeObject(abonnement, new CustomDateTimeConverter());
+            try
+            {
+                List<Abonnement> liste = TraitementRecup<Abonnement>(POST, "abonnement", "champs=" + jsonCommandeDocument);
                 return (liste != null);
             }
             catch (Exception ex)
@@ -236,6 +290,7 @@ namespace MediaTekDocuments.dal
             }
             return false;
         }
+
 
         /// <summary>
         /// Modifie l'étape de suivi d'une commande de document dans la base de données

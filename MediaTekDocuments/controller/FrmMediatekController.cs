@@ -98,11 +98,31 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// récupère les exemplaires d'une revue
         /// </summary>
-        /// <param name="idDocuement">id de la revue concernée</param>
+        /// <param name="idDocument">id de la revue concernée</param>
         /// <returns>Liste d'objets Exemplaire</returns>
         public List<Exemplaire> GetExemplairesRevue(string idDocument)
         {
             return access.GetExemplairesRevue(idDocument);
+        }
+
+        /// <summary>
+        /// récupère les abonnements d'une revue
+        /// </summary>
+        /// <param name="idDocument">id de la revue concernée</param>
+        /// <returns>Liste d'objets Abonnement</returns>
+        public List<Abonnement> GetAbonnementsRevue(string idDocument)
+        {
+            return access.GetAbonnementsRevue(idDocument);
+        }
+
+        /// <summary>
+        /// Crée un abonnement lié à un document (revue) dans la bdd.
+        /// </summary>
+        /// <param name="abonnement">L'objet Abonnement concerné</param>
+        /// <returns>True si la création a pu se faire</returns>
+        public bool CreerAbonnement(Abonnement abonnement)
+        {
+            return access.CreerAbonnement(abonnement);
         }
 
         /// <summary>
@@ -129,7 +149,7 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// Supprime une commande dans la bdd
         /// </summary>
-        /// <param name="idDocument">Id de la commande concerné</param>
+        /// <param name="idCommande">Id de la commande concerné</param>
         /// <returns>True si la suppression a pu se faire</returns>
         public bool SupprimerCommande(string idCommande)
         {

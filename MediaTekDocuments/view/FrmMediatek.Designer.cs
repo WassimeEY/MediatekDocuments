@@ -269,7 +269,7 @@ namespace MediaTekDocuments.view
             this.txtbRevueCommandes_Rayon = new System.Windows.Forms.TextBox();
             this.txtbRevueCommandes_Public = new System.Windows.Forms.TextBox();
             this.txtbRevueCommandes_Genre = new System.Windows.Forms.TextBox();
-            this.txtbRevueCommandes_DelaimiseAdispo = new System.Windows.Forms.TextBox();
+            this.txtbRevueCommandes_DelaiMiseAdispo = new System.Windows.Forms.TextBox();
             this.txtbRevueCommandes_Periodicite = new System.Windows.Forms.TextBox();
             this.txtbRevueCommandes_Titre = new System.Windows.Forms.TextBox();
             this.txtbRevueCommandes_Num = new System.Windows.Forms.TextBox();
@@ -2785,6 +2785,7 @@ namespace MediaTekDocuments.view
             this.tabGestionsCommandesRevue.TabIndex = 7;
             this.tabGestionsCommandesRevue.Text = "Commandes des revues";
             this.tabGestionsCommandesRevue.UseVisualStyleBackColor = true;
+            this.tabGestionsCommandesRevue.Enter += new System.EventHandler(this.tabGestionsCommandesRevue_Enter);
             // 
             // grpRevueCommandes_Revue
             // 
@@ -2795,7 +2796,7 @@ namespace MediaTekDocuments.view
             this.grpRevueCommandes_Revue.Controls.Add(this.txtbRevueCommandes_Rayon);
             this.grpRevueCommandes_Revue.Controls.Add(this.txtbRevueCommandes_Public);
             this.grpRevueCommandes_Revue.Controls.Add(this.txtbRevueCommandes_Genre);
-            this.grpRevueCommandes_Revue.Controls.Add(this.txtbRevueCommandes_DelaimiseAdispo);
+            this.grpRevueCommandes_Revue.Controls.Add(this.txtbRevueCommandes_DelaiMiseAdispo);
             this.grpRevueCommandes_Revue.Controls.Add(this.txtbRevueCommandes_Periodicite);
             this.grpRevueCommandes_Revue.Controls.Add(this.txtbRevueCommandes_Titre);
             this.grpRevueCommandes_Revue.Controls.Add(this.txtbRevueCommandes_Num);
@@ -2851,6 +2852,7 @@ namespace MediaTekDocuments.view
             this.dgvRevueCommandes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRevueCommandes.Size = new System.Drawing.Size(631, 214);
             this.dgvRevueCommandes.TabIndex = 52;
+            this.dgvRevueCommandes.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRevueCommandes_ColumnHeaderMouseClick);
             // 
             // txtbRevueCommandes_CheminImg
             // 
@@ -2884,13 +2886,13 @@ namespace MediaTekDocuments.view
             this.txtbRevueCommandes_Genre.Size = new System.Drawing.Size(207, 20);
             this.txtbRevueCommandes_Genre.TabIndex = 47;
             // 
-            // txtbRevueCommandes_DelaimiseAdispo
+            // txtbRevueCommandes_DelaiMiseAdispo
             // 
-            this.txtbRevueCommandes_DelaimiseAdispo.Location = new System.Drawing.Point(176, 92);
-            this.txtbRevueCommandes_DelaimiseAdispo.Name = "txtbRevueCommandes_DelaimiseAdispo";
-            this.txtbRevueCommandes_DelaimiseAdispo.ReadOnly = true;
-            this.txtbRevueCommandes_DelaimiseAdispo.Size = new System.Drawing.Size(100, 20);
-            this.txtbRevueCommandes_DelaimiseAdispo.TabIndex = 46;
+            this.txtbRevueCommandes_DelaiMiseAdispo.Location = new System.Drawing.Point(176, 92);
+            this.txtbRevueCommandes_DelaiMiseAdispo.Name = "txtbRevueCommandes_DelaiMiseAdispo";
+            this.txtbRevueCommandes_DelaiMiseAdispo.ReadOnly = true;
+            this.txtbRevueCommandes_DelaiMiseAdispo.Size = new System.Drawing.Size(100, 20);
+            this.txtbRevueCommandes_DelaiMiseAdispo.TabIndex = 46;
             // 
             // txtbRevueCommandes_Periodicite
             // 
@@ -2914,6 +2916,7 @@ namespace MediaTekDocuments.view
             this.txtbRevueCommandes_Num.Name = "txtbRevueCommandes_Num";
             this.txtbRevueCommandes_Num.Size = new System.Drawing.Size(100, 20);
             this.txtbRevueCommandes_Num.TabIndex = 43;
+            this.txtbRevueCommandes_Num.TextChanged += new System.EventHandler(this.txtbRevueCommandes_Num_TextChanged);
             // 
             // label95
             // 
@@ -3014,6 +3017,7 @@ namespace MediaTekDocuments.view
             this.btnRevueCommandes_Rechercher.TabIndex = 16;
             this.btnRevueCommandes_Rechercher.Text = "Rechercher";
             this.btnRevueCommandes_Rechercher.UseVisualStyleBackColor = true;
+            this.btnRevueCommandes_Rechercher.Click += new System.EventHandler(this.btnRevueCommandes_Rechercher_Click);
             // 
             // grpRevueCommandes_Gestion
             // 
@@ -3070,6 +3074,7 @@ namespace MediaTekDocuments.view
             this.btnRevueCommandes_Ajout.TabIndex = 17;
             this.btnRevueCommandes_Ajout.Text = "Ajout de la nouvelle commande";
             this.btnRevueCommandes_Ajout.UseVisualStyleBackColor = true;
+            this.btnRevueCommandes_Ajout.Click += new System.EventHandler(this.btnRevueCommandes_Ajout_Click);
             // 
             // txtbRevueCommandes_Nouveau_Num
             // 
@@ -3143,6 +3148,7 @@ namespace MediaTekDocuments.view
             this.btnRevueCommandes_Suppression.TabIndex = 17;
             this.btnRevueCommandes_Suppression.Text = "Supprimer la commande";
             this.btnRevueCommandes_Suppression.UseVisualStyleBackColor = true;
+            this.btnRevueCommandes_Suppression.Click += new System.EventHandler(this.btnRevueCommandes_Suppression_Click);
             // 
             // FrmMediatek
             // 
@@ -3467,7 +3473,7 @@ namespace MediaTekDocuments.view
         private System.Windows.Forms.TextBox txtbRevueCommandes_Rayon;
         private System.Windows.Forms.TextBox txtbRevueCommandes_Public;
         private System.Windows.Forms.TextBox txtbRevueCommandes_Genre;
-        private System.Windows.Forms.TextBox txtbRevueCommandes_DelaimiseAdispo;
+        private System.Windows.Forms.TextBox txtbRevueCommandes_DelaiMiseAdispo;
         private System.Windows.Forms.TextBox txtbRevueCommandes_Periodicite;
         private System.Windows.Forms.TextBox txtbRevueCommandes_Titre;
         private System.Windows.Forms.TextBox txtbRevueCommandes_Num;
