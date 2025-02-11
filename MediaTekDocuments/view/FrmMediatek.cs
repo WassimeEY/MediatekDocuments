@@ -20,7 +20,7 @@ namespace MediaTekDocuments.view
         private readonly BindingSource bdgGenres = new BindingSource();
         private readonly BindingSource bdgPublics = new BindingSource();
         private readonly BindingSource bdgRayons = new BindingSource();
-        private string utilisateurIdService;
+        private readonly string utilisateurIdService;
 
         /// <summary>
         /// Constructeur : création du contrôleur lié à ce formulaire
@@ -1630,15 +1630,17 @@ namespace MediaTekDocuments.view
             {
                 CommandeDocument commandeDocSelectionnee = (CommandeDocument)bdgLivreCommandesListe.List[bdgLivreCommandesListe.Position];
                 string idNouvelleEtapeSuivi = GetSuiviIdFromLibelle(cbbLivreCommandes_NouvelleEtapeSuivi.SelectedItem.ToString(), lesSuivis);
-                int.Parse(idNouvelleEtapeSuivi); //Génère une exception si l'id n'est pas valide
-                if (VerifValiditeChangementEtapeSuivi(commandeDocSelectionnee.IdEtapeSuivi, idNouvelleEtapeSuivi, lesSuivis))
+                if (int.TryParse(idNouvelleEtapeSuivi, out int entier)) //Génère une exception si l'id n'est pas valide
                 {
-                    controller.ModifierEtapeSuiviCommandeDocument(commandeDocSelectionnee.Id, idNouvelleEtapeSuivi);
-                    AfficheLivreCommandes();
-                }
-                else
-                {
-                    MessageBox.Show("Ce changement n'est pas possible.", "Information");
+                    if (VerifValiditeChangementEtapeSuivi(commandeDocSelectionnee.IdEtapeSuivi, idNouvelleEtapeSuivi, lesSuivis))
+                    {
+                        controller.ModifierEtapeSuiviCommandeDocument(commandeDocSelectionnee.Id, idNouvelleEtapeSuivi);
+                        AfficheLivreCommandes();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ce changement n'est pas possible.", "Information");
+                    }
                 }
             }
             catch
@@ -1844,16 +1846,18 @@ namespace MediaTekDocuments.view
             {
                 CommandeDocument commandeDocSelectionnee = (CommandeDocument)bdgDvdCommandesListe.List[bdgDvdCommandesListe.Position];
                 string idNouvelleEtapeSuivi = GetSuiviIdFromLibelle(cbbDvdCommandes_NouvelleEtapeSuivi.SelectedItem.ToString(), lesSuivis);
-                int.Parse(idNouvelleEtapeSuivi); //Génère une exception si l'id n'est pas valide
-                if (VerifValiditeChangementEtapeSuivi(commandeDocSelectionnee.IdEtapeSuivi, idNouvelleEtapeSuivi, lesSuivis))
+                if (int.TryParse(idNouvelleEtapeSuivi, out int entier)) //Génère une exception si l'id n'est pas valide
                 {
-                    controller.ModifierEtapeSuiviCommandeDocument(commandeDocSelectionnee.Id, idNouvelleEtapeSuivi);
-                    AfficheDvdCommandes();
-                }
-                else
-                {
-                    MessageBox.Show("Ce changement n'est pas possible.", "Information");
-                }
+                    if (VerifValiditeChangementEtapeSuivi(commandeDocSelectionnee.IdEtapeSuivi, idNouvelleEtapeSuivi, lesSuivis))
+                    {
+                        controller.ModifierEtapeSuiviCommandeDocument(commandeDocSelectionnee.Id, idNouvelleEtapeSuivi);
+                        AfficheDvdCommandes();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ce changement n'est pas possible.", "Information");
+                    }
+                } 
             }
             catch
             {

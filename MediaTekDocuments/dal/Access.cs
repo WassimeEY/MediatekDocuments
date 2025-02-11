@@ -18,7 +18,10 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// adresse de l'API
         /// </summary>
-        private static readonly string uriApi = "http://localhost/rest_mediatekdocuments/";
+        private static readonly string uriApiKey = "apiUriString";
+        /// nom de la propriété lié aux str d'authentification vers l'API
+        /// </summary>
+        private static readonly string authentificationName = "MediaTekDocuments.Properties.Settings.MediaTekDocumentsAuthentificationStrings";
         /// <summary>
         /// instance unique de la classe
         /// </summary>
@@ -47,16 +50,46 @@ namespace MediaTekDocuments.dal
         private Access()
         {
             String authenticationString;
+            String uriString;
             try
             {
-                authenticationString = "admin:adminpwd";
-                api = ApiRest.GetInstance(uriApi, authenticationString);
+                authenticationString = GetConnectionStringByName(authentificationName);
+                uriString = GetAppSettingStringByKey(uriApiKey);
+                api = ApiRest.GetInstance(uriString, authenticationString);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 Environment.Exit(0);
             }
+        }
+
+        /// <summary>
+        /// Récupération de la chaîne d'authentification à l'API Rest
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        static string GetConnectionStringByName(string name)
+        {
+            string returnValue = null;
+            ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings[name];
+            if (settings != null)
+                returnValue = settings.ConnectionString;
+            return returnValue;
+        }
+
+        /// <summary>
+        /// Récupération d'une valeur d'un paramètre de l'app setting à partir de la clé fournit.
+        /// </summary>
+        /// <param name="key">La clé fournit</param>
+        /// <returns></returns>
+        static string GetAppSettingStringByKey(string key)
+        {
+            string returnValue = null;
+            string valeur = ConfigurationManager.AppSettings[key];
+            if (valeur != null)
+                returnValue = valeur;
+            return returnValue;
         }
 
         /// <summary>
@@ -388,8 +421,7 @@ namespace MediaTekDocuments.dal
         /// <returns>couple au format json</returns>
         private String convertToJson(Object nom, Object valeur)
         {
-            Dictionary<Object, Object> dictionary = new Dictionary<Object, Object>();
-            dictionary.Add(nom, valeur);
+            Dictionary<Object, Object> dictionary = new Dictionary<Object, Object>() { [nom] = valeur };
             return JsonConvert.SerializeObject(dictionary);
         }
 
