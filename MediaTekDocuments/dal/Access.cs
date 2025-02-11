@@ -16,13 +16,9 @@ namespace MediaTekDocuments.dal
     public class Access
     {
         /// <summary>
-        /// adresse de l'API
+        /// clé du paramètre d'app pour l'URI de l'API
         /// </summary>
         private static readonly string uriApiKey = "apiUriString";
-        /// nom de la propriété lié aux str d'authentification vers l'API
-        /// </summary>
-        private static readonly string authentificationName = "MediaTekDocuments.Properties.Settings.MediaTekDocumentsAuthentificationStrings";
-        /// <summary>
         /// nom de la propriété lié aux str d'authentification vers l'API
         /// </summary>
         private static readonly string authentificationName = "MediaTekDocuments.Properties.Settings.MediaTekDocumentsAuthentificationStrings";
@@ -58,8 +54,9 @@ namespace MediaTekDocuments.dal
             try
             {
                 
-                authenticationString = "admin:adminpwd";
-                api = ApiRest.GetInstance(uriApi, authenticationString);
+                authenticationString = GetConnectionStringByName(authentificationName);
+                uriString = GetAppSettingStringByKey(uriApiKey);
+                api = ApiRest.GetInstance(uriString, authenticationString);
             }
             catch (Exception e)
             {
