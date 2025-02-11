@@ -20,16 +20,44 @@ namespace MediaTekDocuments.view
         private readonly BindingSource bdgGenres = new BindingSource();
         private readonly BindingSource bdgPublics = new BindingSource();
         private readonly BindingSource bdgRayons = new BindingSource();
+        private string utilisateurIdService;
 
         /// <summary>
         /// Constructeur : création du contrôleur lié à ce formulaire
         /// </summary>
-        internal FrmMediatek()
+        internal FrmMediatek(string idService)
         {
             InitializeComponent();
             this.controller = new FrmMediatekController();
+            this.utilisateurIdService = idService;
+            AdapterAppSelonService(this.utilisateurIdService);
+        }
+
+        private void FrmMediatek_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void AfficherAlerteFinAbo()
+        {
             FrmAlerteRevues nouvelleForm = new FrmAlerteRevues();
             nouvelleForm.Show(this);
+        }
+
+        private void AdapterAppSelonService(string idService)
+        {
+            switch(idService)
+            {
+                case "00002":
+                    tabOngletsApplication.TabPages.Remove(tabReceptionRevue);
+                    tabOngletsApplication.TabPages.Remove(tabGestionsCommandesLivres);
+                    tabOngletsApplication.TabPages.Remove(tabGestionsCommandesDVD);
+                    tabOngletsApplication.TabPages.Remove(tabGestionsCommandesRevue);
+                    break;
+                case "00003":
+                    AfficherAlerteFinAbo();
+                    break;
+            }
         }
 
         /// <summary>
@@ -2034,7 +2062,9 @@ namespace MediaTekDocuments.view
             return (dateParution >= dateCommande && dateParution <= dateFinAbonnement);
         }
         #endregion
+
         #endregion
 
+        
     }
 }

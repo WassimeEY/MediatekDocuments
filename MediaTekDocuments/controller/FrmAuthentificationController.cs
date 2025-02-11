@@ -5,9 +5,9 @@ using MediaTekDocuments.model;
 namespace MediaTekDocuments.controller
 {
     /// <summary>
-    /// Contrôleur lié à FrmAlerteRevues
+    /// Contrôleur lié à FramAlerteRevues
     /// </summary>
-    class FrmAlerteRevuesController
+    class FrmAuthentificationController
     {
         /// <summary>
         /// Objet d'accès aux données
@@ -17,18 +17,17 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// Récupération de l'instance unique d'accès aux données
         /// </summary>
-        public FrmAlerteRevuesController()
+        public FrmAuthentificationController()
         {
             access = Access.GetInstance();
         }
 
         /// <summary>
-        /// getter sur la liste des abonnements les plus récent de chaque revue, qui s'apprête à expirer.
+        /// Récupère l'utilisateur si l'authentification s'est faite, sinon on reçoit null. 
         /// </summary>
-        /// <returns>Liste d'objets Abonnement</returns>
-        public List<Abonnement> GetAllAbonnementBientotExpire()
+        public Utilisateur GetUtilisateurSiValide(Utilisateur utilisateur)
         {
-            return access.GetAllAbonnementBientotExpire();
+            return access.GetUtilisateurSiValide(utilisateur);
         }
     }
 }

@@ -261,6 +261,19 @@ namespace MediaTekDocuments.view
             this.label89 = new System.Windows.Forms.Label();
             this.btnDvdCommandes_Rechercher = new System.Windows.Forms.Button();
             this.tabGestionsCommandesRevue = new System.Windows.Forms.TabPage();
+            this.grpRevueCommandes_Gestion = new System.Windows.Forms.GroupBox();
+            this.grpRevueCommandes_Gestion_Suppr = new System.Windows.Forms.GroupBox();
+            this.btnRevueCommandes_Suppression = new System.Windows.Forms.Button();
+            this.grpRevueCommandes_Gestion_Nouveau = new System.Windows.Forms.GroupBox();
+            this.label92 = new System.Windows.Forms.Label();
+            this.dtpRevueCommandes_Nouveau_DateFinAbonnement = new System.Windows.Forms.DateTimePicker();
+            this.txtbRevueCommandes_Nouveau_Montant = new System.Windows.Forms.TextBox();
+            this.label104 = new System.Windows.Forms.Label();
+            this.btnRevueCommandes_Ajout = new System.Windows.Forms.Button();
+            this.txtbRevueCommandes_Nouveau_Num = new System.Windows.Forms.TextBox();
+            this.label106 = new System.Windows.Forms.Label();
+            this.dtpRevueCommandes_Nouveau_DateCommande = new System.Windows.Forms.DateTimePicker();
+            this.label107 = new System.Windows.Forms.Label();
             this.grpRevueCommandes_Revue = new System.Windows.Forms.GroupBox();
             this.label93 = new System.Windows.Forms.Label();
             this.label94 = new System.Windows.Forms.Label();
@@ -283,19 +296,6 @@ namespace MediaTekDocuments.view
             this.label101 = new System.Windows.Forms.Label();
             this.label102 = new System.Windows.Forms.Label();
             this.btnRevueCommandes_Rechercher = new System.Windows.Forms.Button();
-            this.grpRevueCommandes_Gestion = new System.Windows.Forms.GroupBox();
-            this.grpRevueCommandes_Gestion_Nouveau = new System.Windows.Forms.GroupBox();
-            this.txtbRevueCommandes_Nouveau_Montant = new System.Windows.Forms.TextBox();
-            this.label104 = new System.Windows.Forms.Label();
-            this.btnRevueCommandes_Ajout = new System.Windows.Forms.Button();
-            this.txtbRevueCommandes_Nouveau_Num = new System.Windows.Forms.TextBox();
-            this.label106 = new System.Windows.Forms.Label();
-            this.dtpRevueCommandes_Nouveau_DateCommande = new System.Windows.Forms.DateTimePicker();
-            this.label107 = new System.Windows.Forms.Label();
-            this.label92 = new System.Windows.Forms.Label();
-            this.dtpRevueCommandes_Nouveau_DateFinAbonnement = new System.Windows.Forms.DateTimePicker();
-            this.grpRevueCommandes_Gestion_Suppr = new System.Windows.Forms.GroupBox();
-            this.btnRevueCommandes_Suppression = new System.Windows.Forms.Button();
             this.tabOngletsApplication.SuspendLayout();
             this.tabLivres.SuspendLayout();
             this.grpLivresInfos.SuspendLayout();
@@ -334,12 +334,12 @@ namespace MediaTekDocuments.view
             ((System.ComponentModel.ISupportInitialize)(this.pcbDvdCommandes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDvdCommandes)).BeginInit();
             this.tabGestionsCommandesRevue.SuspendLayout();
+            this.grpRevueCommandes_Gestion.SuspendLayout();
+            this.grpRevueCommandes_Gestion_Suppr.SuspendLayout();
+            this.grpRevueCommandes_Gestion_Nouveau.SuspendLayout();
             this.grpRevueCommandes_Revue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRevueCommandes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbRevueCommandes)).BeginInit();
-            this.grpRevueCommandes_Gestion.SuspendLayout();
-            this.grpRevueCommandes_Gestion_Nouveau.SuspendLayout();
-            this.grpRevueCommandes_Gestion_Suppr.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabOngletsApplication
@@ -2787,6 +2787,137 @@ namespace MediaTekDocuments.view
             this.tabGestionsCommandesRevue.UseVisualStyleBackColor = true;
             this.tabGestionsCommandesRevue.Enter += new System.EventHandler(this.tabGestionsCommandesRevue_Enter);
             // 
+            // grpRevueCommandes_Gestion
+            // 
+            this.grpRevueCommandes_Gestion.Controls.Add(this.grpRevueCommandes_Gestion_Suppr);
+            this.grpRevueCommandes_Gestion.Controls.Add(this.grpRevueCommandes_Gestion_Nouveau);
+            this.grpRevueCommandes_Gestion.Location = new System.Drawing.Point(3, 450);
+            this.grpRevueCommandes_Gestion.Name = "grpRevueCommandes_Gestion";
+            this.grpRevueCommandes_Gestion.Size = new System.Drawing.Size(859, 175);
+            this.grpRevueCommandes_Gestion.TabIndex = 63;
+            this.grpRevueCommandes_Gestion.TabStop = false;
+            this.grpRevueCommandes_Gestion.Text = "Gestions des commandes de revue";
+            // 
+            // grpRevueCommandes_Gestion_Suppr
+            // 
+            this.grpRevueCommandes_Gestion_Suppr.Controls.Add(this.btnRevueCommandes_Suppression);
+            this.grpRevueCommandes_Gestion_Suppr.Location = new System.Drawing.Point(547, 19);
+            this.grpRevueCommandes_Gestion_Suppr.Name = "grpRevueCommandes_Gestion_Suppr";
+            this.grpRevueCommandes_Gestion_Suppr.Size = new System.Drawing.Size(306, 150);
+            this.grpRevueCommandes_Gestion_Suppr.TabIndex = 60;
+            this.grpRevueCommandes_Gestion_Suppr.TabStop = false;
+            this.grpRevueCommandes_Gestion_Suppr.Text = "Suppression de la commande sélectionnée";
+            // 
+            // btnRevueCommandes_Suppression
+            // 
+            this.btnRevueCommandes_Suppression.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRevueCommandes_Suppression.Location = new System.Drawing.Point(6, 20);
+            this.btnRevueCommandes_Suppression.Name = "btnRevueCommandes_Suppression";
+            this.btnRevueCommandes_Suppression.Size = new System.Drawing.Size(294, 22);
+            this.btnRevueCommandes_Suppression.TabIndex = 17;
+            this.btnRevueCommandes_Suppression.Text = "Supprimer la commande";
+            this.btnRevueCommandes_Suppression.UseVisualStyleBackColor = true;
+            this.btnRevueCommandes_Suppression.Click += new System.EventHandler(this.btnRevueCommandes_Suppression_Click);
+            // 
+            // grpRevueCommandes_Gestion_Nouveau
+            // 
+            this.grpRevueCommandes_Gestion_Nouveau.Controls.Add(this.label92);
+            this.grpRevueCommandes_Gestion_Nouveau.Controls.Add(this.dtpRevueCommandes_Nouveau_DateFinAbonnement);
+            this.grpRevueCommandes_Gestion_Nouveau.Controls.Add(this.txtbRevueCommandes_Nouveau_Montant);
+            this.grpRevueCommandes_Gestion_Nouveau.Controls.Add(this.label104);
+            this.grpRevueCommandes_Gestion_Nouveau.Controls.Add(this.btnRevueCommandes_Ajout);
+            this.grpRevueCommandes_Gestion_Nouveau.Controls.Add(this.txtbRevueCommandes_Nouveau_Num);
+            this.grpRevueCommandes_Gestion_Nouveau.Controls.Add(this.label106);
+            this.grpRevueCommandes_Gestion_Nouveau.Controls.Add(this.dtpRevueCommandes_Nouveau_DateCommande);
+            this.grpRevueCommandes_Gestion_Nouveau.Controls.Add(this.label107);
+            this.grpRevueCommandes_Gestion_Nouveau.Location = new System.Drawing.Point(5, 19);
+            this.grpRevueCommandes_Gestion_Nouveau.Name = "grpRevueCommandes_Gestion_Nouveau";
+            this.grpRevueCommandes_Gestion_Nouveau.Size = new System.Drawing.Size(536, 150);
+            this.grpRevueCommandes_Gestion_Nouveau.TabIndex = 17;
+            this.grpRevueCommandes_Gestion_Nouveau.TabStop = false;
+            this.grpRevueCommandes_Gestion_Nouveau.Text = "Nouvelle commande pour cette revue";
+            // 
+            // label92
+            // 
+            this.label92.AutoSize = true;
+            this.label92.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label92.Location = new System.Drawing.Point(6, 69);
+            this.label92.Name = "label92";
+            this.label92.Size = new System.Drawing.Size(161, 13);
+            this.label92.TabIndex = 63;
+            this.label92.Text = "Date de fin d\'abonnement :";
+            // 
+            // dtpRevueCommandes_Nouveau_DateFinAbonnement
+            // 
+            this.dtpRevueCommandes_Nouveau_DateFinAbonnement.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpRevueCommandes_Nouveau_DateFinAbonnement.Location = new System.Drawing.Point(171, 69);
+            this.dtpRevueCommandes_Nouveau_DateFinAbonnement.Name = "dtpRevueCommandes_Nouveau_DateFinAbonnement";
+            this.dtpRevueCommandes_Nouveau_DateFinAbonnement.Size = new System.Drawing.Size(353, 20);
+            this.dtpRevueCommandes_Nouveau_DateFinAbonnement.TabIndex = 62;
+            // 
+            // txtbRevueCommandes_Nouveau_Montant
+            // 
+            this.txtbRevueCommandes_Nouveau_Montant.Location = new System.Drawing.Point(171, 90);
+            this.txtbRevueCommandes_Nouveau_Montant.Name = "txtbRevueCommandes_Nouveau_Montant";
+            this.txtbRevueCommandes_Nouveau_Montant.Size = new System.Drawing.Size(100, 20);
+            this.txtbRevueCommandes_Nouveau_Montant.TabIndex = 61;
+            // 
+            // label104
+            // 
+            this.label104.AutoSize = true;
+            this.label104.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label104.Location = new System.Drawing.Point(6, 93);
+            this.label104.Name = "label104";
+            this.label104.Size = new System.Drawing.Size(61, 13);
+            this.label104.TabIndex = 60;
+            this.label104.Text = "Montant :";
+            // 
+            // btnRevueCommandes_Ajout
+            // 
+            this.btnRevueCommandes_Ajout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRevueCommandes_Ajout.Location = new System.Drawing.Point(6, 116);
+            this.btnRevueCommandes_Ajout.Name = "btnRevueCommandes_Ajout";
+            this.btnRevueCommandes_Ajout.Size = new System.Drawing.Size(518, 22);
+            this.btnRevueCommandes_Ajout.TabIndex = 17;
+            this.btnRevueCommandes_Ajout.Text = "Ajout de la nouvelle commande";
+            this.btnRevueCommandes_Ajout.UseVisualStyleBackColor = true;
+            this.btnRevueCommandes_Ajout.Click += new System.EventHandler(this.btnRevueCommandes_Ajout_Click);
+            // 
+            // txtbRevueCommandes_Nouveau_Num
+            // 
+            this.txtbRevueCommandes_Nouveau_Num.Location = new System.Drawing.Point(171, 20);
+            this.txtbRevueCommandes_Nouveau_Num.Name = "txtbRevueCommandes_Nouveau_Num";
+            this.txtbRevueCommandes_Nouveau_Num.Size = new System.Drawing.Size(353, 20);
+            this.txtbRevueCommandes_Nouveau_Num.TabIndex = 3;
+            // 
+            // label106
+            // 
+            this.label106.AutoSize = true;
+            this.label106.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label106.Location = new System.Drawing.Point(6, 45);
+            this.label106.Name = "label106";
+            this.label106.Size = new System.Drawing.Size(138, 13);
+            this.label106.TabIndex = 2;
+            this.label106.Text = "Date de la commande :";
+            // 
+            // dtpRevueCommandes_Nouveau_DateCommande
+            // 
+            this.dtpRevueCommandes_Nouveau_DateCommande.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpRevueCommandes_Nouveau_DateCommande.Location = new System.Drawing.Point(171, 45);
+            this.dtpRevueCommandes_Nouveau_DateCommande.Name = "dtpRevueCommandes_Nouveau_DateCommande";
+            this.dtpRevueCommandes_Nouveau_DateCommande.Size = new System.Drawing.Size(353, 20);
+            this.dtpRevueCommandes_Nouveau_DateCommande.TabIndex = 1;
+            // 
+            // label107
+            // 
+            this.label107.AutoSize = true;
+            this.label107.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label107.Location = new System.Drawing.Point(6, 20);
+            this.label107.Name = "label107";
+            this.label107.Size = new System.Drawing.Size(122, 13);
+            this.label107.TabIndex = 0;
+            this.label107.Text = "Numéro commande :";
+            // 
             // grpRevueCommandes_Revue
             // 
             this.grpRevueCommandes_Revue.Controls.Add(this.label93);
@@ -3019,137 +3150,6 @@ namespace MediaTekDocuments.view
             this.btnRevueCommandes_Rechercher.UseVisualStyleBackColor = true;
             this.btnRevueCommandes_Rechercher.Click += new System.EventHandler(this.btnRevueCommandes_Rechercher_Click);
             // 
-            // grpRevueCommandes_Gestion
-            // 
-            this.grpRevueCommandes_Gestion.Controls.Add(this.grpRevueCommandes_Gestion_Suppr);
-            this.grpRevueCommandes_Gestion.Controls.Add(this.grpRevueCommandes_Gestion_Nouveau);
-            this.grpRevueCommandes_Gestion.Location = new System.Drawing.Point(3, 450);
-            this.grpRevueCommandes_Gestion.Name = "grpRevueCommandes_Gestion";
-            this.grpRevueCommandes_Gestion.Size = new System.Drawing.Size(859, 175);
-            this.grpRevueCommandes_Gestion.TabIndex = 63;
-            this.grpRevueCommandes_Gestion.TabStop = false;
-            this.grpRevueCommandes_Gestion.Text = "Gestions des commandes de revue";
-            // 
-            // grpRevueCommandes_Gestion_Nouveau
-            // 
-            this.grpRevueCommandes_Gestion_Nouveau.Controls.Add(this.label92);
-            this.grpRevueCommandes_Gestion_Nouveau.Controls.Add(this.dtpRevueCommandes_Nouveau_DateFinAbonnement);
-            this.grpRevueCommandes_Gestion_Nouveau.Controls.Add(this.txtbRevueCommandes_Nouveau_Montant);
-            this.grpRevueCommandes_Gestion_Nouveau.Controls.Add(this.label104);
-            this.grpRevueCommandes_Gestion_Nouveau.Controls.Add(this.btnRevueCommandes_Ajout);
-            this.grpRevueCommandes_Gestion_Nouveau.Controls.Add(this.txtbRevueCommandes_Nouveau_Num);
-            this.grpRevueCommandes_Gestion_Nouveau.Controls.Add(this.label106);
-            this.grpRevueCommandes_Gestion_Nouveau.Controls.Add(this.dtpRevueCommandes_Nouveau_DateCommande);
-            this.grpRevueCommandes_Gestion_Nouveau.Controls.Add(this.label107);
-            this.grpRevueCommandes_Gestion_Nouveau.Location = new System.Drawing.Point(5, 19);
-            this.grpRevueCommandes_Gestion_Nouveau.Name = "grpRevueCommandes_Gestion_Nouveau";
-            this.grpRevueCommandes_Gestion_Nouveau.Size = new System.Drawing.Size(536, 150);
-            this.grpRevueCommandes_Gestion_Nouveau.TabIndex = 17;
-            this.grpRevueCommandes_Gestion_Nouveau.TabStop = false;
-            this.grpRevueCommandes_Gestion_Nouveau.Text = "Nouvelle commande pour cette revue";
-            // 
-            // txtbRevueCommandes_Nouveau_Montant
-            // 
-            this.txtbRevueCommandes_Nouveau_Montant.Location = new System.Drawing.Point(171, 90);
-            this.txtbRevueCommandes_Nouveau_Montant.Name = "txtbRevueCommandes_Nouveau_Montant";
-            this.txtbRevueCommandes_Nouveau_Montant.Size = new System.Drawing.Size(100, 20);
-            this.txtbRevueCommandes_Nouveau_Montant.TabIndex = 61;
-            // 
-            // label104
-            // 
-            this.label104.AutoSize = true;
-            this.label104.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label104.Location = new System.Drawing.Point(6, 93);
-            this.label104.Name = "label104";
-            this.label104.Size = new System.Drawing.Size(61, 13);
-            this.label104.TabIndex = 60;
-            this.label104.Text = "Montant :";
-            // 
-            // btnRevueCommandes_Ajout
-            // 
-            this.btnRevueCommandes_Ajout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRevueCommandes_Ajout.Location = new System.Drawing.Point(6, 116);
-            this.btnRevueCommandes_Ajout.Name = "btnRevueCommandes_Ajout";
-            this.btnRevueCommandes_Ajout.Size = new System.Drawing.Size(518, 22);
-            this.btnRevueCommandes_Ajout.TabIndex = 17;
-            this.btnRevueCommandes_Ajout.Text = "Ajout de la nouvelle commande";
-            this.btnRevueCommandes_Ajout.UseVisualStyleBackColor = true;
-            this.btnRevueCommandes_Ajout.Click += new System.EventHandler(this.btnRevueCommandes_Ajout_Click);
-            // 
-            // txtbRevueCommandes_Nouveau_Num
-            // 
-            this.txtbRevueCommandes_Nouveau_Num.Location = new System.Drawing.Point(171, 20);
-            this.txtbRevueCommandes_Nouveau_Num.Name = "txtbRevueCommandes_Nouveau_Num";
-            this.txtbRevueCommandes_Nouveau_Num.Size = new System.Drawing.Size(353, 20);
-            this.txtbRevueCommandes_Nouveau_Num.TabIndex = 3;
-            // 
-            // label106
-            // 
-            this.label106.AutoSize = true;
-            this.label106.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label106.Location = new System.Drawing.Point(6, 45);
-            this.label106.Name = "label106";
-            this.label106.Size = new System.Drawing.Size(138, 13);
-            this.label106.TabIndex = 2;
-            this.label106.Text = "Date de la commande :";
-            // 
-            // dtpRevueCommandes_Nouveau_DateCommande
-            // 
-            this.dtpRevueCommandes_Nouveau_DateCommande.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpRevueCommandes_Nouveau_DateCommande.Location = new System.Drawing.Point(171, 45);
-            this.dtpRevueCommandes_Nouveau_DateCommande.Name = "dtpRevueCommandes_Nouveau_DateCommande";
-            this.dtpRevueCommandes_Nouveau_DateCommande.Size = new System.Drawing.Size(353, 20);
-            this.dtpRevueCommandes_Nouveau_DateCommande.TabIndex = 1;
-            // 
-            // label107
-            // 
-            this.label107.AutoSize = true;
-            this.label107.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label107.Location = new System.Drawing.Point(6, 20);
-            this.label107.Name = "label107";
-            this.label107.Size = new System.Drawing.Size(122, 13);
-            this.label107.TabIndex = 0;
-            this.label107.Text = "Numéro commande :";
-            // 
-            // label92
-            // 
-            this.label92.AutoSize = true;
-            this.label92.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label92.Location = new System.Drawing.Point(6, 69);
-            this.label92.Name = "label92";
-            this.label92.Size = new System.Drawing.Size(161, 13);
-            this.label92.TabIndex = 63;
-            this.label92.Text = "Date de fin d\'abonnement :";
-            // 
-            // dtpRevueCommandes_Nouveau_DateFinAbonnement
-            // 
-            this.dtpRevueCommandes_Nouveau_DateFinAbonnement.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpRevueCommandes_Nouveau_DateFinAbonnement.Location = new System.Drawing.Point(171, 69);
-            this.dtpRevueCommandes_Nouveau_DateFinAbonnement.Name = "dtpRevueCommandes_Nouveau_DateFinAbonnement";
-            this.dtpRevueCommandes_Nouveau_DateFinAbonnement.Size = new System.Drawing.Size(353, 20);
-            this.dtpRevueCommandes_Nouveau_DateFinAbonnement.TabIndex = 62;
-            // 
-            // grpRevueCommandes_Gestion_Suppr
-            // 
-            this.grpRevueCommandes_Gestion_Suppr.Controls.Add(this.btnRevueCommandes_Suppression);
-            this.grpRevueCommandes_Gestion_Suppr.Location = new System.Drawing.Point(547, 19);
-            this.grpRevueCommandes_Gestion_Suppr.Name = "grpRevueCommandes_Gestion_Suppr";
-            this.grpRevueCommandes_Gestion_Suppr.Size = new System.Drawing.Size(306, 150);
-            this.grpRevueCommandes_Gestion_Suppr.TabIndex = 60;
-            this.grpRevueCommandes_Gestion_Suppr.TabStop = false;
-            this.grpRevueCommandes_Gestion_Suppr.Text = "Suppression de la commande sélectionnée";
-            // 
-            // btnRevueCommandes_Suppression
-            // 
-            this.btnRevueCommandes_Suppression.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRevueCommandes_Suppression.Location = new System.Drawing.Point(6, 20);
-            this.btnRevueCommandes_Suppression.Name = "btnRevueCommandes_Suppression";
-            this.btnRevueCommandes_Suppression.Size = new System.Drawing.Size(294, 22);
-            this.btnRevueCommandes_Suppression.TabIndex = 17;
-            this.btnRevueCommandes_Suppression.Text = "Supprimer la commande";
-            this.btnRevueCommandes_Suppression.UseVisualStyleBackColor = true;
-            this.btnRevueCommandes_Suppression.Click += new System.EventHandler(this.btnRevueCommandes_Suppression_Click);
-            // 
             // FrmMediatek
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3158,6 +3158,7 @@ namespace MediaTekDocuments.view
             this.Controls.Add(this.tabOngletsApplication);
             this.Name = "FrmMediatek";
             this.Text = "Gestion des documents de la médiathèque";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMediatek_FormClosed);
             this.tabOngletsApplication.ResumeLayout(false);
             this.tabLivres.ResumeLayout(false);
             this.grpLivresInfos.ResumeLayout(false);
@@ -3210,14 +3211,14 @@ namespace MediaTekDocuments.view
             ((System.ComponentModel.ISupportInitialize)(this.pcbDvdCommandes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDvdCommandes)).EndInit();
             this.tabGestionsCommandesRevue.ResumeLayout(false);
+            this.grpRevueCommandes_Gestion.ResumeLayout(false);
+            this.grpRevueCommandes_Gestion_Suppr.ResumeLayout(false);
+            this.grpRevueCommandes_Gestion_Nouveau.ResumeLayout(false);
+            this.grpRevueCommandes_Gestion_Nouveau.PerformLayout();
             this.grpRevueCommandes_Revue.ResumeLayout(false);
             this.grpRevueCommandes_Revue.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRevueCommandes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbRevueCommandes)).EndInit();
-            this.grpRevueCommandes_Gestion.ResumeLayout(false);
-            this.grpRevueCommandes_Gestion_Nouveau.ResumeLayout(false);
-            this.grpRevueCommandes_Gestion_Nouveau.PerformLayout();
-            this.grpRevueCommandes_Gestion_Suppr.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

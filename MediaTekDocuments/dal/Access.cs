@@ -174,6 +174,33 @@ namespace MediaTekDocuments.dal
             return lesAbonnements;
         }
 
+        /// <summary>
+        /// Retourne tous les services à partir de la BDD
+        /// </summary>
+        /// <returns>Liste d'objets Service</returns>
+        public List<Service> GetAllService()
+        {
+            List<Service> lesServices = TraitementRecup<Service>(GET, "service", null);
+            return lesServices;
+        }
+
+
+        public Utilisateur GetUtilisateurSiValide(Utilisateur utilisateur)
+        {
+            JObject jsonLogin = JObject.Parse(convertToJson("login", utilisateur.Login));
+            JObject jsonMdp = JObject.Parse(convertToJson("mdp", utilisateur.Mdp));
+            jsonLogin.Merge(jsonMdp);
+            try
+            {
+                Utilisateur utilisateurRecup = TraitementRecup<Utilisateur>(GET, "utilisateur/" + jsonLogin, null)[0];
+                return utilisateurRecup;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
 
         /// <summary>
         /// Retourne les exemplaires d'une revue
@@ -246,7 +273,7 @@ namespace MediaTekDocuments.dal
         /// <returns>Liste d'objets CommandeDocument</returns>
         public List<CommandeDocument> GetCommandesDocument(string idDocument)
         {
-            String jsonIdDocument = convertToJson("id", idDocument);
+            String jsonIdDocument = convertToJson("idLivreDvd", idDocument);
             List<CommandeDocument> lesCommandesDoc = TraitementRecup<CommandeDocument>(GET, "commandedocument/" + jsonIdDocument, null);
             return lesCommandesDoc;
         }
