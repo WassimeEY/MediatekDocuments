@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using System.Configuration;
+using Serilog;
 using System.Linq;
 
 namespace MediaTekDocuments.dal
@@ -18,7 +19,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// clé du paramètre d'app pour l'URI de l'API
         /// </summary>
-        private static readonly string uriApiKey = "apiUriString";
+        private static readonly string uriApiKey = "MediaTekDocuments.Properties.Settings.apiUriString";
         /// nom de la propriété lié aux str d'authentification vers l'API
         /// </summary>
         private static readonly string authentificationName = "MediaTekDocuments.Properties.Settings.MediaTekDocumentsAuthentificationStrings";
@@ -51,6 +52,10 @@ namespace MediaTekDocuments.dal
         {
             String authenticationString;
             String uriString;
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.File("log.txt")
+                .MinimumLevel.Debug()
+                .CreateLogger();
             try
             {
                 
@@ -60,6 +65,7 @@ namespace MediaTekDocuments.dal
             }
             catch (Exception e)
             {
+                Log.Fatal(e, "Problème dans le constructeur de la classe Access.");
                 Console.WriteLine(e.Message);
                 Environment.Exit(0);
             }
@@ -93,19 +99,6 @@ namespace MediaTekDocuments.dal
             return returnValue;
         }
 
-        /// <summary>
-        /// Récupération de la chaîne d'authentification à l'API Rest
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        static string GetAuthStringByName(string name)
-        {
-            string returnValue = null;
-            ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings[name];
-            if (settings != null)
-                returnValue = settings.ConnectionString;
-            return returnValue;
-        }
 
         /// <summary>
         /// Création et retour de l'instance unique de la classe
@@ -277,6 +270,7 @@ namespace MediaTekDocuments.dal
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "Problème dans la création de l'exemplaire");
                 Console.WriteLine(ex.Message);
             }
             return false;
@@ -309,6 +303,8 @@ namespace MediaTekDocuments.dal
             }
             catch (Exception ex)
             {
+                string log = "Problème dans la création de l'abonnement, concernant la revue d'id: " + abonnement.IdRevue;
+                Log.Error(ex, log);
                 Console.WriteLine(ex.Message);
             }
             return false;
@@ -341,6 +337,8 @@ namespace MediaTekDocuments.dal
             }
             catch (Exception ex)
             {
+                string log = "Problème dans la création de la commande de document, concernant le document d'id: " + commandeDoc.Id;
+                Log.Error(ex, log);
                 Console.WriteLine(ex.Message);
             }
             return false;
@@ -361,6 +359,8 @@ namespace MediaTekDocuments.dal
             }
             catch (Exception ex)
             {
+                string log = "Problème dans la suppression de la commande d'id: " + idCommande;
+                Log.Error(ex, log);
                 Console.WriteLine(ex.Message);
             }
             return false;
@@ -383,6 +383,8 @@ namespace MediaTekDocuments.dal
             }
             catch (Exception ex)
             {
+                string log = "Problème dans la modification de l'étape de suivi de la commande de document, concernant le document d'id: " + idCommandeDoc;
+                Log.Error(ex, log);
                 Console.WriteLine(ex.Message);
             }
             return false;
@@ -418,12 +420,17 @@ namespace MediaTekDocuments.dal
                 }
                 else
                 {
-                    Console.WriteLine("code erreur = " + code + " message = " + (String)retour["message"]);
+                    string log = "code erreur = " + code + " message = " + (String)retour["message"];
+                    Log.Error(log);
+                    Console.WriteLine(log);
                 }
             }catch(Exception e)
             {
-                Console.WriteLine("Erreur lors de l'accès à l'API : "+e.Message);
+                string log = "Erreur lors de l'accès à l'API";
+                Log.Fatal(e, log);
+                Console.WriteLine(log + " : " + e.Message);
                 Environment.Exit(0);
+
             }
             return liste;
         }
