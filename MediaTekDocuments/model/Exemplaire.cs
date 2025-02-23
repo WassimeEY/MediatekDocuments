@@ -8,8 +8,8 @@ namespace MediaTekDocuments.model
     public class Exemplaire
     {
         public int Numero { get; set; }
-        public string Photo { get; set; }
         public DateTime DateAchat { get; set; }
+        public string Photo { get; set; }
         public string IdEtat { get; set; }
         public string Id { get; set; }
 

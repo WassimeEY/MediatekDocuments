@@ -58,7 +58,7 @@ namespace MediaTekDocuments.dal
                 .CreateLogger();
             try
             {
-                
+
                 authenticationString = GetConnectionStringByName(authentificationName);
                 uriString = GetAppSettingStringByKey(uriApiKey);
                 api = ApiRest.GetInstance(uriString, authenticationString);

@@ -25,7 +25,7 @@ namespace MediaTekDocuments.view
         /// <summary>
         /// Constructeur : création du contrôleur lié à ce formulaire
         /// </summary>
-        internal FrmMediatek(string idService)
+        public FrmMediatek(string idService)
         {
             InitializeComponent();
             this.controller = new FrmMediatekController();
