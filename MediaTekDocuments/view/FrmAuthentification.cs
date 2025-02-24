@@ -12,18 +12,29 @@ using MediaTekDocuments.controller;
 
 namespace MediaTekDocuments.view
 {
+    /// <summary>
+    /// Classe d'affichage de l'authentification.
+    /// </summary>
     public partial class FrmAuthentification : Form
     {
         private readonly FrmAuthentificationController controller;
         private Utilisateur utilisateur;
         const string SERVICECULTURE = "00001";
 
+        /// <summary>
+        /// Constructeur : création du contrôleur lié à ce formulaire
+        /// </summary>
         internal FrmAuthentification()
         {
             InitializeComponent();
             this.controller = new FrmAuthentificationController();
         }
 
+        /// <summary>
+        /// Lance la tentative d'authentification si tous les champs sont remplis.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAuthentification_Click(object sender, EventArgs e)
         {
             string login = txtbLogin.Text;

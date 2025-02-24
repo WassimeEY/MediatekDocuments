@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\MediaTekDocuments.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -202,9 +203,7 @@
     <Compile Include="view\FrmAuthentification.Designer.cs">
       <DependentUpon>FrmAuthentification.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\FrmMediatek.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="view\FrmMediatek.cs" />
     <Compile Include="view\FrmMediatek.Designer.cs">
       <DependentUpon>FrmMediatek.cs</DependentUpon>
     </Compile>

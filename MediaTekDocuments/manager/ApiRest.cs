@@ -5,6 +5,15 @@ using Newtonsoft.Json.Linq;
 namespace MediaTekDocuments.manager
 {
     /// <summary>
+    /// Partie gérant la communication avec l'API Rest.
+    /// </summary>
+    [System.Runtime.CompilerServices.CompilerGenerated]
+    internal class NamespaceDoc
+    {
+
+    }
+
+    /// <summary>
     /// Classe indépendante d'accès à une api rest avec éventuellement une "basic authorization"
     /// </summary>
     class ApiRest

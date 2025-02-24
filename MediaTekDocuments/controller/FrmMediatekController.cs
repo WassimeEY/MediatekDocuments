@@ -5,6 +5,15 @@ using MediaTekDocuments.dal;
 namespace MediaTekDocuments.controller
 {
     /// <summary>
+    /// Partie contrôleur de l'application.
+    /// </summary>
+    [System.Runtime.CompilerServices.CompilerGenerated]
+    internal class NamespaceDoc
+    {
+
+    }
+
+    /// <summary>
     /// Contrôleur lié à FrmMediatek
     /// </summary>
     class FrmMediatekController

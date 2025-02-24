@@ -11,7 +11,16 @@ namespace MediaTekDocuments.view
 
 {
     /// <summary>
-    /// Classe d'affichage
+    /// Partie vue de l'application.
+    /// </summary>
+    [System.Runtime.CompilerServices.CompilerGenerated]
+    internal class NamespaceDoc
+    {
+
+    }
+
+    /// <summary>
+    /// Classe d'affichage de l'application
     /// </summary>
     public partial class FrmMediatek : Form
     {
@@ -25,6 +34,7 @@ namespace MediaTekDocuments.view
         /// <summary>
         /// Constructeur : création du contrôleur lié à ce formulaire
         /// </summary>
+        /// <param name="idService">L'id du service de l'utilisateur connecté.</param>
         public FrmMediatek(string idService)
         {
             InitializeComponent();
@@ -33,17 +43,30 @@ namespace MediaTekDocuments.view
             AdapterAppSelonService(this.utilisateurIdService);
         }
 
+        /// <summary>
+        /// Permet de fermer l'application quand cette fenêtre se ferme.
+        /// Cela est nécessaire car la fenêtre principale, sur laquelle s'ouvre le logiciel, est le fenêtre d'authentification.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmMediatek_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
 
+        /// <summary>
+        /// Ouvre la fenêtre d'alerte lisant les revues qui ont un abonnement qui va bientôt expirer.
+        /// </summary>
         private void AfficherAlerteFinAbo()
         {
             FrmAlerteRevues nouvelleForm = new FrmAlerteRevues();
             nouvelleForm.Show(this);
         }
 
+        /// <summary>
+        /// Permet de retirer certaines parties de l'application, selon le service de l'utilisateur connecté.
+        /// </summary>
+        /// <param name="idService">L'id du service de l'utilisateur utilisant l'application.</param>
         private void AdapterAppSelonService(string idService)
         {
             switch(idService)
@@ -1285,6 +1308,12 @@ namespace MediaTekDocuments.view
         const string ETAPESUIVIENCOURS = "00001";
         const string ETAPESUIVILIVREE = "00003";
 
+        /// <summary>
+        /// Permet de récupérer le libellé de l'id de service fournit.
+        /// </summary>
+        /// <param name="idRecherche">L'id de suivi en question.</param>
+        /// <param name="listeSuivi">La liste des suivis utilisé pour la recherche.</param>
+        /// <returns>Le libellé trouvé.</returns>
         private string GetLibelleFromSuiviId(string idRecherche, List<Suivi> listeSuivi)
         {
             foreach (Suivi suivi in listeSuivi)
@@ -1297,6 +1326,12 @@ namespace MediaTekDocuments.view
             return "";
         }
 
+        /// <summary>
+        /// À l'inverse, permet de récupérer l'id qui a comme libellé le libellé fournit en paramètre.
+        /// </summary>
+        /// <param name="libelle">Le libellé en question.</param>
+        /// <param name="listeSuivi">La liste des suivis utilisé pour la recherche.</param>
+        /// <returns>L'id de suivi trouvé.</returns>
         private string GetSuiviIdFromLibelle(string libelle, List<Suivi> listeSuivi)
         {
             foreach (Suivi suivi in listeSuivi)
@@ -1355,6 +1390,14 @@ namespace MediaTekDocuments.view
             }
         }
 
+        /// <summary>
+        /// Retourne une liste de CommandeDocument triée. 
+        /// En utilisant indexColonneDgvTrie pour préciser sur quelle colonne le trie sera fait.
+        /// </summary>
+        /// <param name="dgvCommandesDoc">Le dataGridView utilisé pour récupérer le nom de la colonne d'index égal à indexColonneDgvTrie.</param>
+        /// <param name="indexColonneDgvTrie">L'index de la colonne utilisé pour le trie.</param>
+        /// <param name="listeCommandesDoc">La liste de CommandeDocument qui sera triée.</param>
+        /// <returns>La liste de CommandeDocument triée.</returns>
         private List<CommandeDocument> RecupDonneesDgvCommandesDocTriee(DataGridView dgvCommandesDoc, int indexColonneDgvTrie, List<CommandeDocument> listeCommandesDoc)
         {
             string titreColonne = dgvCommandesDoc.Columns[indexColonneDgvTrie].HeaderText;
@@ -1377,6 +1420,14 @@ namespace MediaTekDocuments.view
             return sortedList;
         }
 
+        /// <summary>
+        /// Retourne une liste d'Abonnement triée. 
+        /// En utilisant indexColonneDgvTrie pour préciser sur quelle colonne le trie sera fait.
+        /// </summary>
+        /// <param name="dgvAbonnements">Le dataGridView utilisé pour récupérer le nom de la colonne d'index égal à indexColonneDgvTrie.</param>
+        /// <param name="indexColonneDgvTrie">L'index de la colonne utilisé pour le trie.</param>
+        /// <param name="listeAbonnements">La liste d'Abonnement qui sera triée.</param>
+        /// <returns>La liste d'Abonnement triée.</returns>
         private List<Abonnement> RecupDonneesDgvAbonnementsTriee(DataGridView dgvAbonnements, int indexColonneDgvTrie, List<Abonnement> listeAbonnements)
         {
             string titreColonne = dgvAbonnements.Columns[indexColonneDgvTrie].HeaderText;
@@ -1396,6 +1447,11 @@ namespace MediaTekDocuments.view
             return sortedList;
         }
 
+        /// <summary>
+        /// Permet de remplir une comboBox passé en paramètre avec la liste d'étape de Suivi fournit en paramètre.
+        /// </summary>
+        /// <param name="listeSuivi">La liste de Suivi en question.</param>
+        /// <param name="cbb">La comboBox en question.</param>
         private void RemplirComboCommandeDocEtapeSuivi(List<Suivi> listeSuivi, ComboBox cbb)
         {
             cbb.Items.Clear();
@@ -1409,6 +1465,14 @@ namespace MediaTekDocuments.view
             }
         }
 
+        /// <summary>
+        /// Permet de vérifier si le changement d'étape de suivi est valide.
+        /// Donc que le changement respecte bien toutes les conditions nécessaires.
+        /// </summary>
+        /// <param name="idAncienneEtapeSuivi">L'id de l'ancienne étape de suivi.</param>
+        /// <param name="idNouvelleEtapeSuivi">L'id de la nouvelle étape de suivi.</param>
+        /// <param name="listeSuivi">La liste d'étape de Suivi.</param>
+        /// <returns>true si le changement est valide, false sinon.</returns>
         private bool VerifValiditeChangementEtapeSuivi(string idAncienneEtapeSuivi, string idNouvelleEtapeSuivi, List<Suivi> listeSuivi)
         {
             List<string> idsListeSuivi = new List<string>();
@@ -1472,7 +1536,7 @@ namespace MediaTekDocuments.view
 
         /// <summary>
         /// Si le numéro de livre est modifié, la zone de l'exemplaire est vidée et inactive
-        /// les informations de la revue son aussi effacées
+        /// les informations de la revue sont aussi effacées.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1550,7 +1614,7 @@ namespace MediaTekDocuments.view
         }
 
         /// <summary>
-        /// vide les zones de recherche
+        /// Vide les zones de recherche
         /// </summary>
         private void VideLivreCommandesZones()
         {
@@ -1565,7 +1629,11 @@ namespace MediaTekDocuments.view
             pcbLivreCommandes.Image = null;
         }
 
-
+        /// <summary>
+        /// Ajoute une commande de document (livre ici) si txtbLivreCommandes_Nouveau_Num est valorisé et qu'il n'y a pas eu de problème de type.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAjoutLivreCommande_Click(object sender, EventArgs e)
         {
             if (!txtbLivreCommandes_Nouveau_Num.Text.Equals(""))
@@ -1603,6 +1671,11 @@ namespace MediaTekDocuments.view
             }
         }
 
+        /// <summary>
+        /// Supprime une commande de document (livre ici) si une commande est sélectionnée, et que l'étape de suivi de cette commande est différent de la constante ETAPESUIVILIVREE.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLivreCommandes_Supprimer_Click(object sender, EventArgs e)
         {
             try
@@ -1624,6 +1697,11 @@ namespace MediaTekDocuments.view
             }
         }
 
+        /// <summary>
+        /// Modifie l'étape de suivi de la commande de document (livre ici) sélectionnée en vérifiant si le changement est possible avec l'aide de la fonction VerifValiditeChangementEtapeSuivi().
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLivreCommandes_ModifierEtapeSuivi_Click(object sender, EventArgs e)
         {
             try
@@ -1767,7 +1845,7 @@ namespace MediaTekDocuments.view
         }
 
         /// <summary>
-        /// vide les zones de recherche
+        /// Vide les zones de recherche
         /// </summary>
         private void VideDvdCommandesZones()
         {
@@ -1782,6 +1860,11 @@ namespace MediaTekDocuments.view
             pcbDvdCommandes.Image = null;
         }
 
+        /// <summary>
+        /// Ajoute une commande de document (dvd ici) si txtbDvdCommandes_Nouveau_Num est valorisé et qu'il n'y a pas eu de problème de type.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDvdCommandes_Ajout_Click(object sender, EventArgs e)
         {
             if (!txtbDvdCommandes_Nouveau_Num.Text.Equals(""))
@@ -1819,6 +1902,11 @@ namespace MediaTekDocuments.view
             }
         }
 
+        /// <summary>
+        /// Supprime une commande de document (dvd ici) si une commande est sélectionnée, et que l'étape de suivi de cette commande est différent de la constante ETAPESUIVILIVREE.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDvdCommandes_Supprimer_Click(object sender, EventArgs e)
         {
             try
@@ -1840,13 +1928,18 @@ namespace MediaTekDocuments.view
             }
         }
 
+        /// <summary>
+        /// Modifie l'étape de suivi de la commande de document (dvd ici) sélectionnée en vérifiant si le changement est possible avec l'aide de la fonction VerifValiditeChangementEtapeSuivi().
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDvdCommandes_Modifier_Click(object sender, EventArgs e)
         {
             try
             {
                 CommandeDocument commandeDocSelectionnee = (CommandeDocument)bdgDvdCommandesListe.List[bdgDvdCommandesListe.Position];
                 string idNouvelleEtapeSuivi = GetSuiviIdFromLibelle(cbbDvdCommandes_NouvelleEtapeSuivi.SelectedItem.ToString(), lesSuivis);
-                if (int.TryParse(idNouvelleEtapeSuivi, out int entier)) //Génère une exception si l'id n'est pas valide
+                if (int.TryParse(idNouvelleEtapeSuivi, out int entier))
                 {
                     if (VerifValiditeChangementEtapeSuivi(commandeDocSelectionnee.IdEtapeSuivi, idNouvelleEtapeSuivi, lesSuivis))
                     {
@@ -1995,6 +2088,11 @@ namespace MediaTekDocuments.view
             pcbRevuesImage.Image = null;
         }
 
+        /// <summary>
+        /// Ajoute un abonnement (commande de revue) si txtbRevueCommandes_Nouveau_Num est valorisé et qu'il n'y a pas eu de problème de type.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRevueCommandes_Ajout_Click(object sender, EventArgs e)
         {
             if (!txtbRevueCommandes_Nouveau_Num.Text.Equals(""))
@@ -2031,6 +2129,11 @@ namespace MediaTekDocuments.view
             }
         }
 
+        /// <summary>
+        /// Supprime un abonnement (commande de revue) si un abonnement est sélectionnée, et que l'abonnement n'est rattaché à aucun exemplaire (un exemplaire compris dans la période de l'abonnement).
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRevueCommandes_Suppression_Click(object sender, EventArgs e)
         {
             try
@@ -2052,7 +2155,7 @@ namespace MediaTekDocuments.view
                 }
                 else
                 {
-                    MessageBox.Show("Vous ne pouvez pas supprimer une commande de revue qui est rattaché à l'un de ses exemplaires (comprise dans la durée de l'abonnement).", "Information");
+                    MessageBox.Show("Vous ne pouvez pas supprimer une commande de revue qui est rattaché à l'un de ses exemplaires (comprise dans la période de l'abonnement).", "Information");
                 }
             }
             catch
@@ -2061,6 +2164,13 @@ namespace MediaTekDocuments.view
             }
         }
 
+        /// <summary>
+        /// Permet de vérifier si la date de parution d'un exemplaire est comprise dans la période d'un abonnement de revue.
+        /// </summary>
+        /// <param name="dateCommande">Date du début de l'abonnement.</param>
+        /// <param name="dateFinAbonnement">Date de fin d'abonnement.</param>
+        /// <param name="dateParution">Date de parution de l'exemplaire.</param>
+        /// <returns></returns>
         public bool ParutionDansAbonnement(DateTime dateCommande, DateTime dateFinAbonnement, DateTime dateParution)
         {
             return (dateParution >= dateCommande && dateParution <= dateFinAbonnement);

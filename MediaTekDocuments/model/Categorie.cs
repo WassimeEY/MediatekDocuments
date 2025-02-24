@@ -6,9 +6,20 @@ namespace MediaTekDocuments.model
     /// </summary>
     public class Categorie
     {
+        /// <summary>
+        /// Identifiant pour un type de public, de genre ou de rayon.
+        /// </summary>
         public string Id { get; }
+        /// <summary>
+        /// Libellé, ça peut donc être pour un type de public, de genre ou de rayon.
+        /// </summary>
         public string Libelle { get; }
 
+        /// <summary>
+        /// Constructeur de la classe métier, valorise ses propriétés avec les paramètres.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="libelle"></param>
         public Categorie(string id, string libelle)
         {
             this.Id = id;

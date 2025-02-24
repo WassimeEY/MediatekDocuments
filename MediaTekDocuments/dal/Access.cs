@@ -12,6 +12,15 @@ using System.Linq;
 namespace MediaTekDocuments.dal
 {
     /// <summary>
+    /// Partie permettant l'accès aux données distantes sur la BDD.
+    /// </summary>
+    [System.Runtime.CompilerServices.CompilerGenerated]
+    internal class NamespaceDoc
+    {
+
+    }
+
+    /// <summary>
     /// Classe d'accès aux données
     /// </summary>
     public class Access
@@ -225,7 +234,11 @@ namespace MediaTekDocuments.dal
             return lesServices;
         }
 
-
+        /// <summary>
+        /// Récupère l'utilisateur si il l'authentification réussi.
+        /// </summary>
+        /// <param name="utilisateur">Le soi disant utilisateur qui sera utilisé pour l'authentification.</param>
+        /// <returns>L'utilisateur en question.</returns>
         public Utilisateur GetUtilisateurSiValide(Utilisateur utilisateur)
         {
             JObject jsonLogin = JObject.Parse(convertToJson("login", utilisateur.Login));
@@ -370,7 +383,7 @@ namespace MediaTekDocuments.dal
         /// <summary>
         /// Modifie l'étape de suivi d'une commande de document dans la base de données
         /// </summary>
-        /// <param name="idDocument">Id de la commande de document concerné</param>
+        /// <param name="idCommandeDoc">Id de la commande de document concerné</param>
         /// <param name="idNouvelleEtapeSuivi">Id de la nouvelle étape de suivi</param>
         /// <returns>True si la modification a pu se faire</returns>
         public bool ModifierEtapeSuiviCommandeDocument(string idCommandeDoc, string idNouvelleEtapeSuivi)
