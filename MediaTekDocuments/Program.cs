@@ -23,7 +23,7 @@ namespace MediaTekDocuments
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMediatek("00003"));
+            Application.Run(new FrmAuthentification());
         }
     }
 }
