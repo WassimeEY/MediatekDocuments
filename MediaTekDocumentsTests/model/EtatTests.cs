@@ -12,7 +12,7 @@ namespace MediaTekDocuments.model.Tests
     public class EtatTests
     {
         private const string id = "00001";
-        private const string libelle = "Adulte";
+        private const string libelle = "neuf";
         private readonly Etat etatTest = new Etat(id, libelle);
 
         [TestMethod()]

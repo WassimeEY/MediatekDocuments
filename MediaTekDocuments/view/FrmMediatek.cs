@@ -10,6 +10,7 @@ using System.IO;
 namespace MediaTekDocuments.view
 
 {
+    /* Cela semble créer problème avec l'ouverture de la form sur VS 19
     /// <summary>
     /// Partie vue de l'application.
     /// </summary>
@@ -18,6 +19,7 @@ namespace MediaTekDocuments.view
     {
 
     }
+    */
 
     /// <summary>
     /// Classe d'affichage de l'application

@@ -86,7 +86,7 @@ namespace MediaTekDocuments.controller
         }
 
         /// <summary>
-        /// getter sur les publics
+        /// getter sur les commandes de document
         /// </summary>
         /// <returns>Liste d'objets CommandeDocument</returns>
         public List<CommandeDocument> GetAllCommandesDocument()
